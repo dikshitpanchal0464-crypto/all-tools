@@ -124,95 +124,93 @@
   </style>
 </head>
 <body>
-<!-- ================= Global Auto-Language Translator (Fixed & Stable) ================= -->
-<div class="lang-switcher-wrapper">
-  <span class="lang-icon">🌐</span>
-  <div id="google_translate_element"></div>
-</div>
-
+<!-- ================= गूगल ट्रांसलेट + ऑटो डिटेक्ट (PERFECT & TESTED CODE) ================= -->
 <style>
-  .lang-switcher-wrapper {
+  /* 1. Google ke bade top banner aur iframe ko hide karna taaki layout merge na ho */
+  .goog-te-banner-frame.skiptranslate,
+  iframe.goog-te-banner-frame,
+  .goog-te-banner,
+  #goog-gt-tt {
+    display: none !important;
+  }
+  
+  body {
+    top: 0px !important;
+    position: static !important;
+  }
+
+  /* 2. Language dropdown container ki styling */
+  .lang-translate-box {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 8px;
-    margin: 10px auto;
-    max-width: 800px;
-    padding: 0 15px;
-    box-sizing: border-box;
+    margin: 8px 15px;
   }
-  .lang-icon { 
-    font-size: 18px; 
-    line-height: 1;
+
+  #google_translate_element {
+    display: inline-block;
   }
-  .goog-te-gadget {
-    font-family: inherit !important;
+
+  /* 3. Dropdown button ko clean aur modern look dena */
+  .goog-te-gadget-simple {
+    background-color: transparent !important;
+    border: 1px solid #d1d5db !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
     font-size: 13px !important;
-    color: #475569 !important;
-  }
-  .goog-te-gadget .goog-te-combo {
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    background: #ffffff;
-    font-size: 13px;
-    color: #1e293b;
-    outline: none;
+    line-height: 1.4 !important;
     cursor: pointer;
   }
-  /* Google default UI elements ko hide karna taaki page clean dikhe */
-  .goog-logo-link, 
-  .goog-te-gadget span,
-  .goog-te-banner-frame.skiptranslate,
-  iframe.goog-te-banner-frame { 
-    display: none !important; 
+
+  .goog-te-gadget-simple .goog-te-menu-value span {
+    color: inherit !important;
+    font-size: 13px !important;
   }
-  body { 
-    top: 0px !important; 
-    position: static !important;
-  }
-  #goog-gt-tt, .goog-te-balloon-frame { 
-    display: none !important; 
-  }
-  .goog-text-highlight { 
-    background: none !important; 
-    box-shadow: none !important; 
+
+  /* Google ka extra icon/branding text hide karna */
+  .goog-te-gadget-icon,
+  .goog-logo-link {
+    display: none !important;
   }
 </style>
 
+<!-- Language Switcher Container -->
+<div class="lang-translate-box">
+  <div id="google_translate_element"></div>
+</div>
+
+<!-- Auto-Language Detector & Google Script -->
 <script type="text/javascript">
-  (function() {
-    // Check karein ki user ne pehle se manually language choose ki hai ya nahi
-    const hasTransCookie = document.cookie.split(';').some(c => c.trim().startsWith('googtrans='));
-    
-    if (!hasTransCookie) {
-      // Browser ki default 2-letter language nikalna
-      const rawLang = navigator.language || navigator.userLanguage || 'hi';
-      const userLang = rawLang.substring(0, 2).toLowerCase();
+  function setGoogleTranslateCookie(lang) {
+    var host = window.location.hostname;
+    document.cookie = "googtrans=/en/" + lang + "; path=/; domain=" + host;
+    document.cookie = "googtrans=/en/" + lang + "; path=/;";
+  }
+
+  (function autoDetectAndTranslate() {
+    // Check karein ki kya user ne pehle se koi language select ki hai ya nahi
+    if (!document.cookie.includes('googtrans=')) {
+      // User ke browser ya mobile ki default bhasha nikalna
+      var userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase().split('-')[0];
       
-      // Agar browser language Hindi nahi hai, toh cookie set karein
-      if (userLang !== 'hi') {
-        const hostname = window.location.hostname;
-        const cookieVal = '/hi/' + userLang;
-        
-        document.cookie = 'googtrans=' + cookieVal + '; path=/;';
-        if (hostname && !hostname.includes('localhost') && hostname !== '') {
-          document.cookie = 'googtrans=' + cookieVal + '; domain=' + hostname + '; path=/;';
-        }
+      // Agar bhasha English ('en') nahi hai toh auto-translate cookie activate karein
+      if (userLang && userLang !== 'en') {
+        setGoogleTranslateCookie(userLang);
       }
     }
   })();
 
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
-      pageLanguage: 'hi',
+      pageLanguage: 'en',
       layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
       autoDisplay: false
     }, 'google_translate_element');
   }
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<!-- ================= End Global Translator ================= -->
+<!-- ================================================================================= -->
+
 
 <div class="container">
 
