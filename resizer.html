@@ -124,9 +124,9 @@
   </style>
 </head>
 <body>
-<!-- ================= गूगल ट्रांसलेट + ऑटो डिटेक्ट (PERFECT & TESTED CODE) ================= -->
+<!-- ================= गूगल ट्रांसलेट + ऑटो डिटेक्ट (FINAL TESTED) ================= -->
 <style>
-  /* 1. Google ke bade top banner aur iframe ko hide karna taaki layout merge na ho */
+  /* 1. Google ke bade top banner aur iframe ko hide karna */
   .goog-te-banner-frame.skiptranslate,
   iframe.goog-te-banner-frame,
   .goog-te-banner,
@@ -139,19 +139,21 @@
     position: static !important;
   }
 
-  /* 2. Language dropdown container ki styling */
+  /* 2. Language dropdown container ki alignment */
   .lang-translate-box {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin: 8px 15px;
+    position: relative;
+    z-index: 9999;
   }
 
   #google_translate_element {
     display: inline-block;
   }
 
-  /* 3. Dropdown button ko clean aur modern look dena */
+  /* 3. Button clean aur compact look */
   .goog-te-gadget-simple {
     background-color: transparent !important;
     border: 1px solid #d1d5db !important;
@@ -167,10 +169,23 @@
     font-size: 13px !important;
   }
 
-  /* Google ka extra icon/branding text hide karna */
   .goog-te-gadget-icon,
   .goog-logo-link {
     display: none !important;
+  }
+
+  /* 4. Language list popup ko mobile screen ke andar right side fix rakhna */
+  .goog-te-menu-frame {
+    max-width: 95vw !important;
+    right: 10px !important;
+    left: auto !important;
+    box-sizing: border-box !important;
+    z-index: 100000 !important;
+  }
+
+  .skiptranslate iframe {
+    max-width: 95vw !important;
+    box-sizing: border-box !important;
   }
 </style>
 
@@ -188,12 +203,8 @@
   }
 
   (function autoDetectAndTranslate() {
-    // Check karein ki kya user ne pehle se koi language select ki hai ya nahi
     if (!document.cookie.includes('googtrans=')) {
-      // User ke browser ya mobile ki default bhasha nikalna
       var userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase().split('-')[0];
-      
-      // Agar bhasha English ('en') nahi hai toh auto-translate cookie activate karein
       if (userLang && userLang !== 'en') {
         setGoogleTranslateCookie(userLang);
       }
@@ -210,6 +221,7 @@
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <!-- ================================================================================= -->
+
 
 
 <div class="container">
