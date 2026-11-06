@@ -493,6 +493,224 @@
     document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
   }
 </script> 
+  <!-- ================= START: Upgraded Social Share & Save Bar ================= -->
+<style>
+  .share-box-container {
+    margin: 32px auto 10px auto;
+    padding: 20px 16px;
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--border, #cbd5e1);
+    border-radius: var(--radius, 14px);
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  }
+  .share-title { 
+    margin: 0 0 14px 0; 
+    font-size: 15px; 
+    font-weight: 700; 
+    color: var(--text, #0f172a); 
+    transition: color 0.3s ease;
+  }
+  .share-buttons-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  .share-btn { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 7px; 
+    padding: 9px 14px; 
+    border-radius: 8px; 
+    font-size: 13px; 
+    font-weight: 600; 
+    text-decoration: none; 
+    color: #ffffff !important; 
+    border: none; 
+    cursor: pointer; 
+    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease; 
+  }
+  .share-btn svg { 
+    width: 15px; 
+    height: 15px; 
+    fill: currentColor; 
+    display: block; 
+    flex-shrink: 0; 
+  }
+  .share-btn:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+    opacity: 0.95; 
+  }
+  .share-btn.whatsapp { background-color: #25D366; }
+  .share-btn.telegram { background-color: #229ED9; }
+  .share-btn.pinterest { background-color: #E60023; }
+  .share-btn.x-twitter { background-color: #000000; }
+  .share-btn.facebook { background-color: #1877F2; }
+  .share-btn.linkedin { background-color: #0A66C2; }
+  .share-btn.copylink { background-color: #475569; }
+  .share-btn.native-share { background-color: #0f172a; }
+</style>
+
+<div class="share-box-container" id="mainShareBox">
+  <p class="share-title" id="shareDynamicTitle">⚡ दोस्तों के साथ शेयर करें या Pinterest पर सेव करें:</p>
+  <div class="share-buttons-grid">
+    
+    <!-- WhatsApp -->
+    <a href="#" id="share-whatsapp" target="_blank" rel="noopener noreferrer" class="share-btn whatsapp" title="Share on WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.772.82 2.791.82 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.376-.452-4.801-1.242l-5.2 1.362 1.39-5.078c-.902-1.488-1.389-3.21-1.389-5.042 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+
+    <!-- Telegram -->
+    <a href="#" id="share-telegram" target="_blank" rel="noopener noreferrer" class="share-btn telegram" title="Share on Telegram">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.916z"/></svg>
+      <span>Telegram</span>
+    </a>
+
+    <!-- Pinterest -->
+    <a href="#" id="share-pinterest" target="_blank" rel="noopener noreferrer" class="share-btn pinterest" title="Save to Pinterest">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.365-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.535.535 6.627 0 12-5.373 12-12C24 5.372 18.627 0 12 0z"/></svg>
+      <span>Pinterest</span>
+    </a>
+
+    <!-- X (Twitter) -->
+    <a href="#" id="share-x" target="_blank" rel="noopener noreferrer" class="share-btn x-twitter" title="Share on X">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <span>X</span>
+    </a>
+
+    <!-- Facebook -->
+    <a href="#" id="share-facebook" target="_blank" rel="noopener noreferrer" class="share-btn facebook" title="Share on Facebook">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      <span>Facebook</span>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="#" id="share-linkedin" target="_blank" rel="noopener noreferrer" class="share-btn linkedin" title="Share on LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      <span>LinkedIn</span>
+    </a>
+
+    <!-- Mobile More Options (Native Share) -->
+    <button type="button" id="share-native" class="share-btn native-share" title="More Options" style="display: none;">
+      <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+      <span>More</span>
+    </button>
+
+    <!-- Copy Link -->
+    <button type="button" id="share-copylink" class="share-btn copylink" title="Copy Tool Link">
+      <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+      <span id="copy-text">Copy Link</span>
+    </button>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    const rawUrl = window.location.href;
+    const rawTitle = "Free Image Resizer Online - फोटो व हस्ताक्षर का साइज KB में कम करें";
+    const pageUrl = encodeURIComponent(rawUrl);
+    const pageTitle = encodeURIComponent(rawTitle);
+
+    // Track click event in Google Analytics
+    function trackShare(platform) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'share', {
+          method: platform,
+          content_type: 'web_tool',
+          item_id: 'image_resizer'
+        });
+      }
+    }
+
+    const wa = document.getElementById("share-whatsapp");
+    const tg = document.getElementById("share-telegram");
+    const pin = document.getElementById("share-pinterest");
+    const x = document.getElementById("share-x");
+    const fb = document.getElementById("share-facebook");
+    const li = document.getElementById("share-linkedin");
+
+    if (wa) {
+      wa.href = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+      wa.addEventListener("click", () => trackShare("WhatsApp"));
+    }
+    if (tg) {
+      tg.href = `https://t.me/share/url?url=${pageUrl}&text=${pageTitle}`;
+      tg.addEventListener("click", () => trackShare("Telegram"));
+    }
+    if (pin) {
+      pin.href = `https://pinterest.com/pin/create/button/?url=${pageUrl}&description=${pageTitle}`;
+      pin.addEventListener("click", () => trackShare("Pinterest"));
+    }
+    if (x) {
+      x.href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
+      x.addEventListener("click", () => trackShare("X_Twitter"));
+    }
+    if (fb) {
+      fb.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+      fb.addEventListener("click", () => trackShare("Facebook"));
+    }
+    if (li) {
+      li.href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+      li.addEventListener("click", () => trackShare("LinkedIn"));
+    }
+
+    // Native Mobile Share
+    const nativeBtn = document.getElementById("share-native");
+    if (navigator.share && nativeBtn) {
+      nativeBtn.style.display = "inline-flex";
+      nativeBtn.addEventListener("click", async () => {
+        trackShare("Native_Mobile_Menu");
+        try {
+          await navigator.share({
+            title: rawTitle,
+            text: "Fast & free tool to resize images online without quality drop:",
+            url: rawUrl,
+          });
+        } catch (err) {}
+      });
+    }
+
+    // Copy Link Action
+    const copyBtn = document.getElementById("share-copylink");
+    const copyText = document.getElementById("copy-text");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        trackShare("Copy_Link");
+        navigator.clipboard.writeText(rawUrl).then(() => {
+          copyText.innerText = "Copied!";
+          setTimeout(() => { copyText.innerText = "Copy Link"; }, 2000);
+        });
+      });
+    }
+
+    // Dynamic Title Update when processing finishes
+    const procBtn = document.getElementById("processBtn");
+    if (procBtn) {
+      const origHandler = procBtn.onclick;
+      window.addEventListener("load", () => {
+        const observer = new MutationObserver(() => {
+          const resSec = document.getElementById("resultSection");
+          const titleElem = document.getElementById("shareDynamicTitle");
+          if (resSec && resSec.style.display === "block" && titleElem) {
+            titleElem.innerHTML = "✅ फोटो तैयार है! दोस्तों के साथ शेयर करें या Pinterest पर सेव करें:";
+            titleElem.style.color = "var(--success, #15803d)";
+          }
+        });
+        const resSec = document.getElementById("resultSection");
+        if (resSec) observer.observe(resSec, { attributes: true, attributeFilter: ['style'] });
+      });
+    }
+  })();
+</script>
+<!-- ================= END: Upgraded Social Share & Save Bar ================= -->
+
   <!-- Related Image & Design Tools Section -->
   <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
     <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 22px;">
