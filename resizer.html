@@ -124,6 +124,95 @@
   </style>
 </head>
 <body>
+<!-- ================= Global Auto-Language Translator (Fixed & Stable) ================= -->
+<div class="lang-switcher-wrapper">
+  <span class="lang-icon">🌐</span>
+  <div id="google_translate_element"></div>
+</div>
+
+<style>
+  .lang-switcher-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 10px auto;
+    max-width: 800px;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+  .lang-icon { 
+    font-size: 18px; 
+    line-height: 1;
+  }
+  .goog-te-gadget {
+    font-family: inherit !important;
+    font-size: 13px !important;
+    color: #475569 !important;
+  }
+  .goog-te-gadget .goog-te-combo {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    font-size: 13px;
+    color: #1e293b;
+    outline: none;
+    cursor: pointer;
+  }
+  /* Google default UI elements ko hide karna taaki page clean dikhe */
+  .goog-logo-link, 
+  .goog-te-gadget span,
+  .goog-te-banner-frame.skiptranslate,
+  iframe.goog-te-banner-frame { 
+    display: none !important; 
+  }
+  body { 
+    top: 0px !important; 
+    position: static !important;
+  }
+  #goog-gt-tt, .goog-te-balloon-frame { 
+    display: none !important; 
+  }
+  .goog-text-highlight { 
+    background: none !important; 
+    box-shadow: none !important; 
+  }
+</style>
+
+<script type="text/javascript">
+  (function() {
+    // Check karein ki user ne pehle se manually language choose ki hai ya nahi
+    const hasTransCookie = document.cookie.split(';').some(c => c.trim().startsWith('googtrans='));
+    
+    if (!hasTransCookie) {
+      // Browser ki default 2-letter language nikalna
+      const rawLang = navigator.language || navigator.userLanguage || 'hi';
+      const userLang = rawLang.substring(0, 2).toLowerCase();
+      
+      // Agar browser language Hindi nahi hai, toh cookie set karein
+      if (userLang !== 'hi') {
+        const hostname = window.location.hostname;
+        const cookieVal = '/hi/' + userLang;
+        
+        document.cookie = 'googtrans=' + cookieVal + '; path=/;';
+        if (hostname && !hostname.includes('localhost') && hostname !== '') {
+          document.cookie = 'googtrans=' + cookieVal + '; domain=' + hostname + '; path=/;';
+        }
+      }
+    }
+  })();
+
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'hi',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- ================= End Global Translator ================= -->
 
 <div class="container">
 
