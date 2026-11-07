@@ -50,6 +50,134 @@
     </style>
 </head>
 <body>
+<!-- ================= स्मार्ट ऑटो और मैन्युअल ट्रांसलेटर ================= -->
+<div style="display: flex; justify-content: flex-end; padding: 10px 15px;">
+  <select id="site-lang-picker" onchange="switchLanguage(this.value)" style="
+    padding: 7px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1f2937;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    cursor: pointer;
+  ">
+    <!-- डिफ़ॉल्ट भाषा -->
+    <option value="en">English (US/UK)</option>
+
+    <!-- भारत की मुख्य भाषाएँ -->
+    <optgroup label="भारतीय भाषाएँ (Indian Languages)">
+      <option value="hi">हिन्दी (Hindi)</option>
+      <option value="bn">বাংলা (Bengali)</option>
+      <option value="mr">मराठी (Marathi)</option>
+      <option value="te">తెలుగు (Telugu)</option>
+      <option value="ta">தமிழ் (Tamil)</option>
+      <option value="gu">ગુજરાતી (Gujarati)</option>
+      <option value="ur">اردو (Urdu)</option>
+      <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+      <option value="kn">ಕನ್ನಡ (Kannada)</option>
+      <option value="ml">മലയാളം (Malayalam)</option>
+    </optgroup>
+
+    <!-- दुनिया की सबसे बड़ी आबादी वाली भाषाएँ -->
+    <optgroup label="वैश्विक भाषाएँ (Global Languages)">
+      <option value="es">Español (Spanish)</option>
+      <option value="ar">العربية (Arabic)</option>
+      <option value="pt">Português (Portuguese)</option>
+      <option value="ru">Русский (Russian)</option>
+      <option value="fr">Français (French)</option>
+      <option value="de">Deutsch (German)</option>
+      <option value="zh-CN">中文 (Simplified Chinese)</option>
+      <option value="ja">日本語 (Japanese)</option>
+      <option value="id">Bahasa Indonesia</option>
+    </optgroup>
+  </select>
+</div>
+
+<!-- अदृश्य गूगल इंजन -->
+<div id="google_translate_element" style="display: none !important;"></div>
+
+<style>
+  .goog-te-banner-frame,
+  .goog-te-menu-frame,
+  .skiptranslate:not(#site-lang-picker),
+  body > .skiptranslate {
+    display: none !important;
+  }
+  body {
+    top: 0px !important;
+    position: static !important;
+  }
+</style>
+
+<script type="text/javascript">
+  var allowedLangs = ['en','hi','bn','mr','te','ta','gu','ur','pa','kn','ml','es','ar','pt','ru','fr','de','zh-CN','ja','id'];
+
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+  }
+
+  function setTransCookie(lang) {
+    var host = window.location.hostname;
+    document.cookie = "googtrans=/en/" + lang + "; path=/;";
+    if (host.indexOf('.') !== -1) {
+      document.cookie = "googtrans=/en/" + lang + "; domain=" + host + "; path=/;";
+    }
+  }
+
+  // 1. ऑटो-डिटेक्ट डिवाइस भाषा
+  (function initAutoTranslate() {
+    var savedCookie = getCookie('googtrans');
+    if (!savedCookie) {
+      var userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var langCode = userLang.split('-')[0];
+      if (userLang.indexOf('zh') !== -1) {
+        langCode = 'zh-CN';
+      }
+      if (langCode !== 'en' && allowedLangs.indexOf(langCode) !== -1) {
+        setTransCookie(langCode);
+      }
+    }
+  })();
+
+  // 2. गूगल ट्रांसलेट सेटअप
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  // 3. भाषा बदलने का फंक्शन (English चुनने पर कुकी पूरी तरह डिलीट)
+  function switchLanguage(lang) {
+    var host = window.location.hostname;
+    if (lang === 'en') {
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + host + "; path=/;";
+    } else {
+      setTransCookie(lang);
+    }
+    window.location.reload();
+  }
+
+  // एक्टिव भाषा को ड्रॉपडाउन में सेट रखना
+  window.addEventListener('DOMContentLoaded', function() {
+    var cookieVal = getCookie('googtrans');
+    var picker = document.getElementById('site-lang-picker');
+    if (cookieVal && picker) {
+      var parts = cookieVal.split('/');
+      var activeLang = parts[parts.length - 1];
+      if (activeLang) {
+        picker.value = activeLang;
+      }
+    }
+  });
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- ================= समाप्त ================= -->
 
 <div class="main-container">
 
