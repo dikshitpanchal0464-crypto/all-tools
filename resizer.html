@@ -123,104 +123,137 @@
     .btn-download:hover { background: var(--success-hover); }
   </style>
 </head>
-<body>
-<!-- ================= गूगल ट्रांसलेट + ऑटो डिटेक्ट (FINAL TESTED) ================= -->
+<body> 
+  <!-- ================= स्मार्ट ऑटो और मैन्युअल ट्रांसलेटर ================= -->
+<div style="display: flex; justify-content: flex-end; padding: 10px 15px;">
+  <select id="site-lang-picker" onchange="switchLanguage(this.value)" style="
+    padding: 7px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1f2937;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    cursor: pointer;
+  ">
+    <!-- डिफ़ॉल्ट भाषा -->
+    <option value="en">English (US/UK)</option>
+
+    <!-- भारत की मुख्य भाषाएँ -->
+    <optgroup label="भारतीय भाषाएँ (Indian Languages)">
+      <option value="hi">हिन्दी (Hindi)</option>
+      <option value="bn">বাংলা (Bengali)</option>
+      <option value="mr">मराठी (Marathi)</option>
+      <option value="te">తెలుగు (Telugu)</option>
+      <option value="ta">தமிழ் (Tamil)</option>
+      <option value="gu">ગુજરાતી (Gujarati)</option>
+      <option value="ur">اردو (Urdu)</option>
+      <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+      <option value="kn">ಕನ್ನಡ (Kannada)</option>
+      <option value="ml">മലയാളം (Malayalam)</option>
+    </optgroup>
+
+    <!-- दुनिया की सबसे बड़ी आबादी वाली भाषाएँ -->
+    <optgroup label="वैश्विक भाषाएँ (Global Languages)">
+      <option value="es">Español (Spanish - स्पेन/लैटिन अमेरिका)</option>
+      <option value="ar">العربية (Arabic - अरब देश)</option>
+      <option value="pt">Português (Portuguese - ब्राज़ील/पुर्तगाल)</option>
+      <option value="ru">Русский (Russian - रूस)</option>
+      <option value="fr">Français (French - फ्रांस)</option>
+      <option value="de">Deutsch (German - जर्मनी)</option>
+      <option value="zh-CN">中文 (Simplified Chinese - चीन)</option>
+      <option value="ja">日本語 (Japanese - जापान)</option>
+      <option value="id">Bahasa Indonesia (इंडोनेशिया)</option>
+    </optgroup>
+  </select>
+</div>
+
+<!-- अदृश्य गूगल इंजन (इससे स्क्रीन पर बड़ा पॉपअप नहीं आएगा) -->
+<div id="google_translate_element" style="display: none !important;"></div>
+
 <style>
-  /* 1. Google ke bade top banner aur iframe ko hide karna */
-  .goog-te-banner-frame.skiptranslate,
-  iframe.goog-te-banner-frame,
-  .goog-te-banner,
-  #goog-gt-tt {
+  /* गूगल के पुराने बड़े पॉपअप, फ्रेम और टॉप बार को पूरी तरह बंद रखने के लिए */
+  .goog-te-banner-frame,
+  .goog-te-menu-frame,
+  .skiptranslate:not(#site-lang-picker),
+  body > .skiptranslate {
     display: none !important;
   }
-  
   body {
     top: 0px !important;
     position: static !important;
   }
-
-  /* 2. Language dropdown container ki alignment */
-  .lang-translate-box {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin: 8px 15px;
-    position: relative;
-    z-index: 9999;
-  }
-
-  #google_translate_element {
-    display: inline-block;
-  }
-
-  /* 3. Button clean aur compact look */
-  .goog-te-gadget-simple {
-    background-color: transparent !important;
-    border: 1px solid #d1d5db !important;
-    padding: 4px 10px !important;
-    border-radius: 6px !important;
-    font-size: 13px !important;
-    line-height: 1.4 !important;
-    cursor: pointer;
-  }
-
-  .goog-te-gadget-simple .goog-te-menu-value span {
-    color: inherit !important;
-    font-size: 13px !important;
-  }
-
-  .goog-te-gadget-icon,
-  .goog-logo-link {
-    display: none !important;
-  }
-
-  /* 4. Language list popup ko mobile screen ke andar right side fix rakhna */
-  .goog-te-menu-frame {
-    max-width: 95vw !important;
-    right: 10px !important;
-    left: auto !important;
-    box-sizing: border-box !important;
-    z-index: 100000 !important;
-  }
-
-  .skiptranslate iframe {
-    max-width: 95vw !important;
-    box-sizing: border-box !important;
-  }
 </style>
 
-<!-- Language Switcher Container -->
-<div class="lang-translate-box">
-  <div id="google_translate_element"></div>
-</div>
-
-<!-- Auto-Language Detector & Google Script -->
 <script type="text/javascript">
-  function setGoogleTranslateCookie(lang) {
-    var host = window.location.hostname;
-    document.cookie = "googtrans=/en/" + lang + "; path=/; domain=" + host;
-    document.cookie = "googtrans=/en/" + lang + "; path=/;";
+  // 1. चुनी हुई मुख्य भाषाओं की लिस्ट
+  var allowedLangs = ['en','hi','bn','mr','te','ta','gu','ur','pa','kn','ml','es','ar','pt','ru','fr','de','zh-CN','ja','id'];
+
+  // कुकी (Cookie) से जुड़े फंक्शन्स
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
   }
 
-  (function autoDetectAndTranslate() {
-    if (!document.cookie.includes('googtrans=')) {
-      var userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase().split('-')[0];
-      if (userLang && userLang !== 'en') {
-        setGoogleTranslateCookie(userLang);
+  function setTransCookie(lang) {
+    var host = window.location.hostname;
+    document.cookie = "googtrans=/en/" + lang + "; path=/;";
+    if (host.indexOf('.') !== -1) {
+      document.cookie = "googtrans=/en/" + lang + "; domain=" + host + "; path=/;";
+    }
+  }
+
+  // 2. ऑटो-डिटेक्ट: पहली बार आने पर यूजर के मोबाइल/देश की भाषा पहचानना
+  (function initAutoTranslate() {
+    var savedCookie = getCookie('googtrans');
+    if (!savedCookie) {
+      var userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var langCode = userLang.split('-')[0];
+      
+      // चीनी भाषा के लिए विशेष नियम
+      if (userLang.indexOf('zh') !== -1) {
+        langCode = 'zh-CN';
+      }
+
+      // अगर यूजर की भाषा लिस्ट में मौजूद है और इंग्लिश नहीं है, तो अपने-आप बदल जाए
+      if (langCode !== 'en' && allowedLangs.indexOf(langCode) !== -1) {
+        setTransCookie(langCode);
       }
     }
   })();
 
+  // 3. गूगल ट्रांसलेट सेटअप
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
       autoDisplay: false
     }, 'google_translate_element');
   }
+
+  // 4. मैन्युअल भाषा बदलने का फंक्शन
+  function switchLanguage(lang) {
+    setTransCookie(lang);
+    window.location.reload();
+  }
+
+  // रीलोड होने के बाद भी चुनी हुई भाषा को ड्रॉपडाउन में सेट रखना
+  window.addEventListener('DOMContentLoaded', function() {
+    var cookieVal = getCookie('googtrans');
+    var picker = document.getElementById('site-lang-picker');
+    if (cookieVal && picker) {
+      var parts = cookieVal.split('/');
+      var activeLang = parts[parts.length - 1];
+      if (activeLang) {
+        picker.value = activeLang;
+      }
+    }
+  });
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<!-- ================================================================================= -->
+<!-- ================= ट्रांसलेटर कोड समाप्त ================= -->
+
 
 
 
