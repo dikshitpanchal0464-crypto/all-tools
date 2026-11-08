@@ -1,6 +1,6 @@
 // share-buttons.js - The AI Hub Tools Smart Share Widget
 (function () {
-  // 1. FontAwesome आइकन्स जोड़ना (WhatsApp, Telegram आदि के आइकन्स के लिए)
+  // 1. FontAwesome आइकन्स जोड़ना
   if (!document.getElementById('fa-icons-css')) {
     var fa = document.createElement('link');
     fa.id = 'fa-icons-css';
@@ -9,7 +9,7 @@
     document.head.appendChild(fa);
   }
 
-  // 2. स्क्रीनशॉट जैसा डिट्टो CSS स्टाइल
+  // 2. CSS स्टाइल (नए बटन्स के कलर्स के साथ)
   var style = document.createElement('style');
   style.innerHTML = `
     .aihub-share-card {
@@ -18,7 +18,7 @@
       border-radius: 18px;
       padding: 24px 16px;
       margin: 30px auto;
-      max-width: 520px;
+      max-width: 540px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       text-align: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -59,8 +59,11 @@
     .btn-tg { background: #2AABEE; }
     .btn-pin { background: #E60023; }
     .btn-x { background: #000000; }
+    .btn-threads { background: #000000; }
+    .btn-reddit { background: #FF4500; }
     .btn-fb { background: #1877F2; }
     .btn-in { background: #0A66C2; }
+    .btn-mail { background: #EA4335; }
     .btn-more { background: #0F172A; }
     .btn-copy { 
       background: #475569; 
@@ -71,10 +74,11 @@
   `;
   document.head.appendChild(style);
 
-  // 3. करंट पेज का ऑटोमैटिक URL और Title
+  // 3. करंट पेज URL, Title और इमेज लिंक
   var pageUrl = encodeURIComponent(window.location.href);
   var rawTitle = document.title || "Check out this free online tool!";
   var pageTitle = encodeURIComponent(rawTitle);
+  var shareImage = encodeURIComponent('https://theaihub-tools.github.io/all-tools/1794114249737.png');
 
   // 4. शेयर कार्ड HTML बनाना
   var card = document.createElement('div');
@@ -88,17 +92,26 @@
       <a class="aihub-btn btn-tg" href="https://t.me/share/url?url=${pageUrl}&text=${pageTitle}" target="_blank" rel="noopener">
         <i class="fa-brands fa-telegram"></i> Telegram
       </a>
-      <a class="aihub-btn btn-pin" href="https://pinterest.com/pin/create/button/?url=${pageUrl}&description=${pageTitle}" target="_blank" rel="noopener">
+      <a class="aihub-btn btn-pin" href="https://pinterest.com/pin/create/button/?url=${pageUrl}&media=${shareImage}&description=${pageTitle}" target="_blank" rel="noopener">
         <i class="fa-brands fa-pinterest"></i> Pinterest
       </a>
       <a class="aihub-btn btn-x" href="https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}" target="_blank" rel="noopener">
         <i class="fa-brands fa-x-twitter"></i> X
+      </a>
+      <a class="aihub-btn btn-threads" href="https://www.threads.net/intent/post?text=${pageTitle}%20${pageUrl}" target="_blank" rel="noopener">
+        <i class="fa-brands fa-threads"></i> Threads
+      </a>
+      <a class="aihub-btn btn-reddit" href="https://reddit.com/submit?url=${pageUrl}&title=${pageTitle}" target="_blank" rel="noopener">
+        <i class="fa-brands fa-reddit-alien"></i> Reddit
       </a>
       <a class="aihub-btn btn-fb" href="https://www.facebook.com/sharer/sharer.php?u=${pageUrl}" target="_blank" rel="noopener">
         <i class="fa-brands fa-facebook-f"></i> Facebook
       </a>
       <a class="aihub-btn btn-in" href="https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}" target="_blank" rel="noopener">
         <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+      </a>
+      <a class="aihub-btn btn-mail" href="mailto:?subject=${pageTitle}&body=Check%20out%20this%20tool:%20${pageUrl}">
+        <i class="fa-solid fa-envelope"></i> Email
       </a>
       <button class="aihub-btn btn-more" id="aihub-native-share">
         <i class="fa-solid fa-share-nodes"></i> More
@@ -117,7 +130,7 @@
     document.body.appendChild(card);
   }
 
-  // 5. 'More' बटन का लॉजिक (मोबाइल का डिफ़ॉल्ट शेयर मेनू)
+  // 5. 'More' बटन का लॉजिक
   var moreBtn = document.getElementById('aihub-native-share');
   if (navigator.share) {
     moreBtn.addEventListener('click', function () {
@@ -127,7 +140,7 @@
       }).catch(function(){});
     });
   } else {
-    moreBtn.style.display = 'none'; // अगर डेस्कटॉप पर सपोर्ट न हो तो छिप जाएगा
+    moreBtn.style.display = 'none';
   }
 
   // 6. 'Copy Link' बटन का लॉजिक
