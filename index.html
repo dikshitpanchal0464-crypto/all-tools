@@ -11,7 +11,7 @@
       gtag('config', 'G-MEQE82X4L0');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The AI Hub Tools | Free Online Web Tools Platform</title>
     <meta name="description" content="Free collection of online web tools including Image Resizer, QR Code Generator, Age Calculator, Word Counter, Password Generator, and Color Picker. Fast, private and free.">
     <meta name="keywords" content="free online tools, image resizer online, qr code generator, age calculator, word counter, password generator, color picker, palette generator, the ai hub tools">
@@ -46,48 +46,79 @@
     <meta name="google-site-verification" content="zUxRmWQ6XkicpxdpZvDyP-_nFVCCobj8sgqF_XFJQ" />
 
     <style>
-        * { 
+        *, *::before, *::after { 
             box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
         }
+
         html, body {
+            width: 100%;
+            min-height: 100%;
             overflow-x: hidden !important;
-            width: 100% !important;
-            position: relative;
+            background: #f0f2f5;
         }
+
         body { 
-            background: #f0f2f5; 
-            margin: 0; 
-            padding: 25px 15px; 
-            display: flex; 
-            justify-content: center; 
+            padding: 20px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         .container { 
             max-width: 720px; 
             width: 100%; 
+            margin: 0 auto;
             text-align: center; 
             position: relative;
-            z-index: 1;
         }
         
-        .header { margin-bottom: 30px; }
-        .site-logo { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 2px solid #ffffff; }
-        .badge { display: inline-block; background: #ebf8ff; color: #3182ce; font-size: 12px; font-weight: bold; padding: 5px 12px; border-radius: 20px; margin-bottom: 10px; border: 1px solid #bee3f8; }
-        h1 { font-size: 26px; color: #1a202c; margin: 0 0 8px 0; }
-        p.subtitle { color: #4a5568; font-size: 14px; margin: 0; }
+        .header { 
+            margin-bottom: 25px; 
+            padding: 10px 0;
+        }
+
+        .badge { 
+            display: inline-block; 
+            background: #ebf8ff; 
+            color: #3182ce; 
+            font-size: 12px; 
+            font-weight: bold; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            margin-bottom: 12px; 
+            border: 1px solid #bee3f8; 
+        }
+
+        h1 { 
+            font-size: 26px; 
+            color: #1a202c; 
+            margin: 0 0 8px 0; 
+            word-wrap: break-word;
+        }
+
+        p.subtitle { 
+            color: #4a5568; 
+            font-size: 14px; 
+            line-height: 1.5;
+            margin: 0 auto; 
+            max-width: 500px;
+        }
 
         .tools-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 15px; 
-            margin-top: 20px; 
             width: 100%;
+            margin-top: 15px;
         }
         
         .tool-card { 
             background: #ffffff; 
             border-radius: 12px; 
-            padding: 20px; 
+            padding: 18px; 
             text-decoration: none; 
             color: inherit; 
             box-shadow: 0 3px 10px rgba(0,0,0,0.06); 
@@ -99,29 +130,66 @@
             text-align: left; 
             width: 100%;
         }
-        .tool-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-color: #3182ce; }
 
-        .tool-icon { font-size: 28px; margin-bottom: 10px; }
-        .tool-title { font-size: 17px; font-weight: bold; color: #2d3748; margin-bottom: 6px; }
-        .tool-desc { font-size: 13px; color: #718096; line-height: 1.4; margin-bottom: 15px; flex-grow: 1; }
+        .tool-card:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+            border-color: #3182ce; 
+        }
+
+        .tool-icon { 
+            font-size: 28px; 
+            margin-bottom: 10px; 
+        }
+
+        .tool-title { 
+            font-size: 16px; 
+            font-weight: bold; 
+            color: #2d3748; 
+            margin-bottom: 6px; 
+        }
+
+        .tool-desc { 
+            font-size: 13px; 
+            color: #718096; 
+            line-height: 1.4; 
+            margin-bottom: 14px; 
+            flex-grow: 1; 
+        }
         
-        .tool-link-text { font-size: 13px; font-weight: bold; color: #3182ce; display: inline-flex; align-items: center; }
-        .tool-card:hover .tool-link-text { text-decoration: underline; }
+        .tool-link-text { 
+            font-size: 13px; 
+            font-weight: bold; 
+            color: #3182ce; 
+            display: inline-flex; 
+            align-items: center; 
+        }
+
+        .tool-card:hover .tool-link-text { 
+            text-decoration: underline; 
+        }
 
         footer { 
             text-align: center; 
-            padding: 25px 15px; 
+            padding: 22px 12px; 
             border-top: 1px solid #e0e0e0; 
-            margin-top: 50px; 
+            margin-top: 40px; 
             background-color: #f8f9fa; 
-            font-family: Arial, sans-serif; 
-            font-size: 14px; 
+            font-size: 13px; 
             line-height: 1.8; 
             border-radius: 12px;
             width: 100%;
         }
 
-        /* Mobile Layout & Translator Widget Fix */
+        /* Widgets hard constrain to stop horizontal shifting */
+        .skiptranslate, 
+        .goog-te-banner-frame, 
+        #google_translate_element, 
+        .share-buttons-container {
+            max-width: 100% !important;
+            overflow: hidden !important;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 15px 10px;
@@ -129,15 +197,11 @@
             .tools-grid {
                 grid-template-columns: 1fr !important;
             }
-            .tool-card {
-                padding: 16px;
+            h1 {
+                font-size: 22px;
             }
-            /* translator.js widget fix: स्क्रीन के बाहर जाने से रोके */
-            .goog-te-banner-frame, .skiptranslate, #google_translate_element {
-                max-width: 100vw !important;
-                overflow-x: hidden !important;
-                position: relative !important;
-                left: 0 !important;
+            p.subtitle {
+                font-size: 13px;
             }
         }
     </style>
@@ -146,7 +210,6 @@
 
 <div class="container">
     <div class="header">
-        <img src="1794114249737.png" alt="The AI Hub Tools Logo" class="site-logo">
         <div><span class="badge">100% Free & Secure Tools</span></div>
         <h1>The AI Hub Tools</h1>
         <p class="subtitle">Fast, free, and secure online tools for your everyday digital needs</p>
@@ -312,22 +375,20 @@
             <div class="tool-desc">Pick colors, use screen eyedropper, test WCAG contrast, and build palettes.</div>
             <span class="tool-link-text">Open Tool →</span>
         </a>
-      
     </div>
 
-<footer>
-    <p style="margin: 0 0 10px 0; color: #555;">
-        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
-    </p>
-    <p style="margin: 0;">
-        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
-        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
-        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
-        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
-        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
-    </p>
-</footer>
-
+    <footer>
+        <p style="margin: 0 0 10px 0; color: #555;">
+            &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+        </p>
+        <p style="margin: 0;">
+            <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
+            <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
+            <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
+            <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+            <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+        </p>
+    </footer>
 </div>
 
 <!-- Language Translator Widget -->
