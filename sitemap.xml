@@ -139,5 +139,11 @@
     <loc>https://theaihub-tools.github.io/all-tools/glassmorphism-generator.html</loc>
     <lastmod>2026-10-27</lastmod>
     <priority>0.90</priority>
+  </url> 
+    <url>
+    <loc>https://theaihub-tools.github.io/all-tools/sip-calculator.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.90</priority>
   </url>
+
 </urlset>
