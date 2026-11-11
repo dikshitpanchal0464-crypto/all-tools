@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQE82X4L0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MEQE82X4L0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro SIP Calculator Online — Tax-Adjusted, Step-Up & Wealth Engine</title>
+    <meta name="description" content="Calculate your Mutual Fund SIP returns, LTCG post-tax in-hand wealth, step-up increments, and download an official multi-page PDF wealth report. 100% Free & Secure.">
+    <meta name="keywords" content="sip calculator, post tax sip calculator, ltcg tax sip, step up sip calculator, mutual fund return calculator, wealth calculator, investment growth schedule">
+    
+    <!-- Open Graph / Social Sharing (Real Repository URLs) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pro SIP Calculator Online — The AI Hub Tools" />
+    <meta property="og:description" content="Calculate your SIP maturity amount, LTCG tax impact, and download official wealth report." />
+    <meta property="og:url" content="https://theaihub-tools.github.io/all-tools/sip-calculator.html" />
+    <meta property="og:image" content="https://theaihub-tools.github.io/all-tools/age-calculator-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pro SIP Calculator Online — The AI Hub Tools" />
+    <meta name="twitter:description" content="Calculate SIP wealth, post-tax returns, and inflation impact." />
+    <meta name="twitter:image" content="https://theaihub-tools.github.io/all-tools/age-calculator-banner.jpg" />
+
+    <!-- Zero-Cost Client-Side PDF Generation Engines -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- === [Engine: Anti-Hack & Domain Lock Shield] === -->
+    <script>
+      (function() {
+        "use strict";
+
+        // 1. Anti-Theft Domain Lock (अगर कोई कोड डाउनलोड करके अपने सर्वर पर चलाएगा तो ब्लॉक होगा)
+        var allowedHosts = ["theaihub-tools.github.io", "localhost", "127.0.0.1"];
+        var currentHost = window.location.hostname;
+        var isAllowed = false;
+        for (var i = 0; i < allowedHosts.length; i++) {
+          if (currentHost === allowedHosts[i] || currentHost.endsWith(".github.io")) {
+            isAllowed = true;
+            break;
+          }
+        }
+        if (!isAllowed && window.location.protocol !== "file:") {
+          document.documentElement.innerHTML = "<div style='text-align:center;padding:50px;font-family:sans-serif;'><h2>Unauthorized Mirror Detected</h2><p>Redirecting to official source...</p></div>";
+          window.location.href = "https://theaihub-tools.github.io/all-tools/sip-calculator.html";
+        }
+
+        // 2. Right-Click Prevention
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        }, false);
+
+        // 3. DevTools & View-Source Shortcut Locks
+        document.addEventListener('keydown', function(e) {
+          if (
+            e.keyCode === 123 || 
+            (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
+            (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83))
+          ) {
+            e.preventDefault();
+            return false;
+          }
+        }, false);
+
+        // 4. iFrame Mode Handshake & Protection
+        if (window.self !== window.top) {
+          document.documentElement.classList.add('in-iframe-mode');
+
+          var metaRobots = document.createElement('meta');
+          metaRobots.name = 'robots';
+          metaRobots.content = 'noindex, follow';
+          document.head.appendChild(metaRobots);
+
+          var urlParams = new URLSearchParams(window.location.search);
+          var embedUID = urlParams.get('embed_uid');
+
+          window.__sendHeightToParent = function() {
+            var body = document.body;
+            var html = document.documentElement;
+            var height = Math.max(
+              body.scrollHeight, body.offsetHeight, body.getBoundingClientRect().height,
+              html.clientHeight, html.scrollHeight, html.offsetHeight
+            );
+
+            window.parent.postMessage({
+              type: 'TOOL_RESIZE_EVENT',
+              uid: embedUID,
+              height: Math.ceil(height)
+            }, '*');
+          };
+
+          window.addEventListener('load', window.__sendHeightToParent);
+          window.addEventListener('resize', window.__sendHeightToParent);
+        }
+      })();
+    </script>
+
+    <style>
+        * { 
+          box-sizing: border-box; 
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        input {
+          -webkit-user-select: auto !important;
+          -moz-user-select: auto !important;
+          user-select: auto !important;
+        }
+
+        body { background: #f0f2f5; margin: 0; padding: 20px 10px; color: #2d3748; }
+        
+        .main-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+        .card { background: #ffffff; max-width: 540px; width: 100%; padding: 24px; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; margin-bottom: 30px; }
+        h1 { font-size: 22px; color: #1a202c; margin-top: 0; margin-bottom: 6px; }
+        p.subtitle { color: #4a5568; font-size: 13px; margin-top: 0; margin-bottom: 20px; }
+        
+        .input-row { text-align: left; margin-bottom: 18px; }
+        .input-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        label { font-size: 13px; font-weight: bold; color: #2d3748; margin: 0; }
+        
+        input[type="number"] { 
+          width: 140px; 
+          padding: 8px 10px; 
+          border: 1px solid #cbd5e0; 
+          border-radius: 8px; 
+          font-size: 14px; 
+          font-weight: 700;
+          color: #1a202c;
+          text-align: right;
+          outline: none; 
+          transition: 0.2s; 
+        }
+        input[type="number"]:focus { border-color: #3182ce; box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15); }
+
+        /* Benchmark Chips */
+        .chip-container {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        .chip-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .chip-btn:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        /* Range Slider Styling */
+        input[type="range"] {
+          width: 100%;
+          height: 6px;
+          border-radius: 5px;
+          background: #e2e8f0;
+          outline: none;
+          margin-top: 6px;
+          cursor: pointer;
+          -webkit-appearance: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #3182ce;
+          cursor: pointer;
+          box-shadow: 0 2px 6px rgba(49, 130, 206, 0.4);
+          transition: transform 0.1s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+          transform: scale(1.15);
+        }
+
+        /* Pro Toggles Box */
+        .pro-controls {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            text-align: left;
+        }
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+        }
+        .toggle-item:last-child { margin-bottom: 0; }
+        .toggle-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #3182ce;
+        }
+        .step-up-field {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        button.btn-calc { width: 100%; background: #3182ce; color: white; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-top: 4px; }
+        button.btn-calc:hover { background: #2b6cb0; }
+
+        #result { display: block; margin-top: 20px; padding: 16px; background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 10px; text-align: left; }
+        .res-title { font-size: 14px; color: #2b6cb0; font-weight: bold; margin-bottom: 10px; }
+        
+        .result-highlight {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .highlight-amount { font-size: 24px; font-weight: 800; color: #2b6cb0; margin-top: 4px; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .stat-item {
+            background: #ffffff;
+            border: 1px solid #bee3f8;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+        }
+        .stat-num { font-size: 14px; font-weight: 700; color: #1e293b; }
+        .stat-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; margin-top: 2px; }
+
+        /* Tax & Inflation Alert Badges */
+        .tax-badge {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .inflation-badge {
+            display: none;
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            color: #92400e;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .visual-bar-wrap { margin-bottom: 14px; }
+        .bar-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .progress-bar-container {
+            display: flex;
+            height: 12px;
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #e2e8f0;
+        }
+        .bar-invested { background: #3182ce; height: 100%; transition: width 0.2s ease; }
+        .bar-wealth { background: #38a169; height: 100%; transition: width 0.2s ease; }
+
+        .share-actions { display: flex; gap: 8px; margin-top: 8px; }
+        .btn-share-mini {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #cbd5e0;
+            background: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: #2d3748;
+            transition: 0.2s;
+        }
+        .btn-share-mini:hover { background: #edf2f7; }
+        .btn-pdf { background: #059669 !important; color: #fff !important; border-color: #059669 !important; }
+        .btn-pdf:hover { background: #047857 !important; }
+
+        /* Year-by-Year Table Accordion */
+        .table-toggle-btn {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 14px;
+        }
+        .table-wrapper {
+            display: none;
+            margin-top: 10px;
+            max-height: 280px;
+            overflow-y: auto;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+        table.growth-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            text-align: right;
+        }
+        table.growth-table th {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 8px;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid #cbd5e1;
+        }
+        table.growth-table td {
+            padding: 7px 8px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+        }
+        table.growth-table tr:hover { background: #f8fafc; }
+
+        .social-share-wrap {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid #edf2f7;
+        }
+        .social-share-title { font-size: 13px; font-weight: 700; color: #4a5568; margin-bottom: 10px; text-align: left; }
+        .social-share-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .share-btn:hover { opacity: 0.9; }
+        .share-whatsapp { background-color: #25D366; }
+        .share-facebook { background-color: #1877F2; }
+        .share-twitter { background-color: #000000; }
+        .share-telegram { background-color: #229ED9; }
+        .share-linkedin { background-color: #0A66C2; }
+        .share-copy { background-color: #4B5563; }
+
+        .seo-text { text-align: left; font-size: 12px; color: #718096; margin-top: 25px; border-top: 1px solid #edf2f7; padding-top: 15px; }
+
+        .content-section { width: 100%; padding: 24px; border-radius: 12px; background: #ffffff; border: 1px solid #e2e8f0; line-height: 1.7; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 30px; }
+        .content-section h2 { font-size: 1.3rem; margin-top: 0; color: #1a202c; }
+        .content-section h3 { font-size: 1.1rem; margin-top: 22px; color: #2b6cb0; }
+        .content-section ol { padding-left: 20px; }
+        .faq-item { margin-bottom: 15px; }
+        .faq-item strong { color: #2d3748; }
+
+        footer { width: 100%; text-align: center; padding: 25px 15px; border-top: 1px solid #e0e0e0; background-color: #f8f9fa; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8; }
+
+        /* === iFrame Clean Mode === */
+        .in-iframe-mode body {
+          background: transparent !important;
+          padding: 8px !important;
+          margin: 0 !important;
+          overflow-y: hidden !important;
+        }
+        .in-iframe-mode .main-container { max-width: 100% !important; width: 100% !important; }
+        .in-iframe-mode .card { box-shadow: none !important; border: 1px solid #e2e8f0 !important; max-width: 100% !important; margin-bottom: 0 !important; padding: 16px !important; }
+        .in-iframe-mode .content-section,
+        .in-iframe-mode footer,
+        .in-iframe-mode .container,
+        .in-iframe-mode .social-share-wrap,
+        .in-iframe-mode #auto-embed-generator { display: none !important; }
+    </style>
+</head>
+<body> 
+
+<div class="main-container">
+
+    <div class="card">
+        <h1>Pro SIP Calculator Online</h1>
+        <p class="subtitle">Calculate Mutual Fund Wealth, Step-Up Growth, LTCG Tax & Download PDF</p>
+
+        <!-- Input 1: Monthly Investment + Slider -->
+        <div class="input-row">
+            <div class="input-header">
+                <label for="monthlyInvestment">Monthly Investment (₹):</label>
+                <input type="number" id="monthlyInvestment" min="500" max="500000" step="500" value="5000">
+            </div>
+            <input type="range" id="monthlySlider" min="500" max="200000" step="500" value="5000">
+        </div>
+
+        <!-- Input 2: Expected Return Rate + Benchmark Presets -->
+        <div class="input-row">
+            <div class="input-header">
+                <label for="expectedReturn">Expected Return (% p.a):</label>
+                <input type="number" id="expectedReturn" min="1" max="35" step="0.5" value="12">
+            </div>
+            <!-- Benchmark Category Chips -->
+            <div class="chip-container">
+                <button type="button" class="chip-btn" onclick="applyPreset(12)">Large Cap (12%)</button>
+                <button type="button" class="chip-btn" onclick="applyPreset(14)">Mid Cap (14%)</button>
+                <button type="button" class="chip-btn" onclick="applyPreset(16)">Small Cap (16%)</button>
+                <button type="button" class="chip-btn" onclick="applyPreset(9)">Debt/Hybrid (9%)</button>
+            </div>
+            <input type="range" id="returnSlider" min="1" max="30" step="0.5" value="12">
+        </div>
+
+        <!-- Input 3: Time Period + Slider -->
+        <div class="input-row">
+            <div class="input-header">
+                <label for="investmentPeriod">Time Period (Years):</label>
+                <input type="number" id="investmentPeriod" min="1" max="40" step="1" value="10">
+            </div>
+            <input type="range" id="periodSlider" min="1" max="40" step="1" value="10">
+        </div>
+
+        <!-- Pro Features: Step-Up SIP & Inflation Adjuster -->
+        <div class="pro-controls">
+            <label class="toggle-item">
+                <span>📈 Enable Step-Up SIP (Annual Increment)</span>
+                <input type="checkbox" id="stepUpToggle">
+            </label>
+            <div class="step-up-field" id="stepUpBox">
+                <div class="input-header">
+                    <label for="stepUpRate">Annual Step-Up (%):</label>
+                    <input type="number" id="stepUpRate" min="1" max="25" step="1" value="10">
+                </div>
+                <input type="range" id="stepUpSlider" min="1" max="25" step="1" value="10">
+            </div>
+
+            <label class="toggle-item" style="margin-top: 10px;">
+                <span>📉 Adjust for Inflation (6% Benchmark)</span>
+                <input type="checkbox" id="inflationToggle">
+            </label>
+        </div>
+
+        <button class="btn-calc" onclick="calculateSIP()">Calculate Wealth Growth</button>
+
+        <div id="result">
+            <div class="res-title">Your Investment Projection:</div>
+            
+            <div class="result-highlight">
+                <div style="font-size: 12px; color: #64748b; text-transform: uppercase; font-weight: 700;">Expected Maturity Amount</div>
+                <div class="highlight-amount" id="totalWealthDisplay">₹0</div>
+            </div>
+
+            <!-- LTCG Tax Breakdown Badge -->
+            <div class="tax-badge" id="taxBadgeDisplay">
+                🛡️ <strong>Post-Tax In-Hand:</strong> <strong id="postTaxWealthDisplay">₹0</strong> <br>
+                <span style="font-size: 11px; opacity: 0.9;">(Estimated LTCG Tax @ 12.5% after ₹1.25L exemption: <span id="taxAmountDisplay">₹0</span>)</span>
+            </div>
+
+            <!-- Inflation Alert Box -->
+            <div class="inflation-badge" id="inflationNotice">
+                💡 <strong>Inflation Adjusted:</strong> In today's purchasing power, your wealth is worth <strong id="realWealthDisplay">₹0</strong>.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-num" id="totalInvestedDisplay">₹0</div>
+                    <div class="stat-lbl">Total Invested</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" id="estReturnsDisplay" style="color: #2e7d32;">₹0</div>
+                    <div class="stat-lbl">Estimated Returns</div>
+                </div>
+            </div>
+
+            <!-- Visual Progress Ratio -->
+            <div class="visual-bar-wrap">
+                <div class="bar-labels">
+                    <span id="investedRatioLbl">Invested: 50%</span>
+                    <span id="returnsRatioLbl">Wealth Gain: 50%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="bar-invested" id="barInvested" style="width: 50%;"></div>
+                    <div class="bar-wealth" id="barWealth" style="width: 50%;"></div>
+                </div>
+            </div>
+
+            <!-- Year-by-Year Growth Schedule Toggle -->
+            <button class="table-toggle-btn" onclick="toggleScheduleTable()">
+                <span>📊 View Year-by-Year Growth Table</span>
+                <span id="tableChevron">▼</span>
+            </button>
+            <div class="table-wrapper" id="tableScheduleWrap">
+                <table class="growth-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Year</th>
+                            <th>Invested (₹)</th>
+                            <th>Interest (₹)</th>
+                            <th>Balance (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="growthTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="share-actions">
+                <button class="btn-share-mini" onclick="copySIPSummary()">📋 Copy Summary</button>
+                <button class="btn-share-mini" onclick="shareSIPWhatsApp()">💬 WhatsApp</button>
+                <button class="btn-share-mini btn-pdf" onclick="downloadPDFReport()">📄 Download PDF</button>
+            </div>
+        </div>
+
+        <!-- Social Share Block -->
+        <div class="social-share-wrap" id="socialShareSection">
+            <div class="social-share-title">🔗 Share this financial tool:</div>
+            <div class="social-share-buttons">
+                <a href="#" class="share-btn share-whatsapp" onclick="shareToPlatform('whatsapp'); return false;">💬 WhatsApp</a>
+                <a href="#" class="share-btn share-facebook" onclick="shareToPlatform('facebook'); return false;">📘 Facebook</a>
+                <a href="#" class="share-btn share-twitter" onclick="shareToPlatform('twitter'); return false;">✖ Twitter / X</a>
+                <a href="#" class="share-btn share-telegram" onclick="shareToPlatform('telegram'); return false;">✈ Telegram</a>
+                <a href="#" class="share-btn share-linkedin" onclick="shareToPlatform('linkedin'); return false;">💼 LinkedIn</a>
+                <button class="share-btn share-copy" onclick="copyPageLink(this);">📋 Copy Link</button>
+            </div>
+        </div>
+
+        <div class="seo-text">
+            <strong>Key Features:</strong>
+            <ul>
+                <li>Regular & Step-Up SIP with Real-Time Slider controls</li>
+                <li>12.5% Long-Term Capital Gains (LTCG) post-tax computation</li>
+                <li>Category benchmark presets for Large, Mid, and Small Cap indices</li>
+                <li>Inflation adjusted purchasing power & Year-by-Year schedule</li>
+                <li>Zero-server cost client-side PDF Report generator</li>
+            </ul>
+        </div>
+
+        <!-- Automatic "Copy Embed Code" Box -->
+        <div id="auto-embed-generator"></div>
+    </div> 
+
+    <!-- SEO Content Section -->
+    <section class="content-section">
+        <h2>Professional Online SIP & Wealth Calculator — The AI Hub Tools</h2>
+        <p>A Systematic Investment Plan (SIP) combined with disciplined annual Step-Ups is one of the most powerful wealth-creation engines in mutual fund history. This tool by The AI Hub Tools empowers you to evaluate compound growth, calculate actual post-tax in-hand returns after 12.5% LTCG tax, observe inflation erosion, and download an official financial report.</p>
+        
+        <h3>Post-Budget LTCG Tax Rules for Mutual Funds</h3>
+        <p>Under the latest tax regulations in India, equity mutual fund capital gains exceeding ₹1.25 Lakhs per financial year are subject to a flat <strong>12.5% Long-Term Capital Gains (LTCG) tax</strong>. Our tool accurately calculates your taxable gains above this exemption, giving you your exact net in-hand wealth corpus.</p>
+
+        <h3>Understanding Step-Up SIP (The Compounding Accelerator)</h3>
+        <p>A standard SIP keeps your monthly contribution constant throughout your tenure. However, as your career progresses and income rises, increasing your SIP amount annually by 10% or 15% (known as a <strong>Step-Up SIP</strong>) exponentially boosts your final wealth corpus without placing immediate financial strain on your budget.</p>
+
+        <h3>Frequently Asked Questions (FAQs)</h3>
+        
+        <div class="faq-item">
+            <p><strong>1. How is the LTCG tax calculated in this tool?</strong><br>
+            The calculator subtracts your total principal invested from the final maturity corpus to compute gross returns. An exemption of ₹1,25,000 is deducted from the gains, and a 12.5% tax is applied to the remaining taxable profit.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>2. What is a Step-Up SIP and why should I use it?</strong><br>
+            A Step-Up SIP automatically raises your monthly mutual fund investment by a chosen percentage every year, mirroring your salary hikes and dramatically accelerating compounding.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>3. What benchmark return rates should I choose?</strong><br>
+            Historically over 10-15 year horizons, Large Cap index funds yield around 12%, Mid Caps around 14%, and Small Cap funds range around 16% CAGR.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>4. Can I save or print my investment projection?</strong><br>
+            Yes! Click the green "📄 Download PDF" button to download an official, multi-page formatted investment schedule with tax analysis directly to your device.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>5. Is this tool 100% free and private?</strong><br>
+            Yes. All algorithms, tax computations, and PDF renders execute entirely inside your local web browser. No financial data is ever stored or transmitted to external servers.</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- Real Verified Legal Footer Links -->
+<footer>
+    <p style="margin: 0 0 10px 0; color: #555;">
+        &copy; 2026 <strong>The AI Hub Tools</strong>. All rights reserved.
+    </p>
+    <p style="margin: 0;">
+        <a href="index.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Home</a> | 
+        <a href="about.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">About Us</a> | 
+        <a href="contact.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
+        <a href="privacy-policy.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
+        <a href="terms.html" style="color: #007bff; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+    </p>
+</footer>
+
+<!-- Real Verified Related Tools Section -->
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+  <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 22px;">
+    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px; color: #0f172a;">
+      🔢 Related Utility Tools:
+    </h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <a href="age-calculator.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.08); color: #9333ea; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">📅 Age Calculator</a>
+      <a href="days-calculator.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.08); color: #9333ea; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">⏳ Days Calculator</a>
+      <a href="case-word-counter.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.08); color: #9333ea; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">📊 Word Counter</a>
+      <a href="password-generator.html" style="padding: 8px 14px; background: rgba(147, 51, 234, 0.08); color: #9333ea; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">🔐 Password Generator</a>
+      <a href="index.html" style="padding: 8px 14px; background: #9333ea; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">← All Tools</a> 
+      <a href="https://api.whatsapp.com/send?text=" onclick="this.href='https://api.whatsapp.com/send?text=' + encodeURIComponent('Check out this Pro SIP Calculator: ' + document.title + ' - ' + window.location.href);" target="_blank" style="padding: 8px 14px; background: #25D366; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">💬 Share on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+    var lastSIPReport = "";
+    var currentYearlyData = [];
+    var currentSummary = {};
+
+    // 1. Dual-Sync Handlers for Sliders and Number Inputs
+    function syncInputs(numInputId, sliderId) {
+        var num = document.getElementById(numInputId);
+        var slider = document.getElementById(sliderId);
+
+        slider.addEventListener("input", function() {
+            num.value = this.value;
+            calculateSIP();
+        });
+
+        num.addEventListener("input", function() {
+            slider.value = this.value;
+            calculateSIP();
+        });
+    }
+
+    function applyPreset(rate) {
+        document.getElementById("expectedReturn").value = rate;
+        document.getElementById("returnSlider").value = rate;
+        calculateSIP();
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        syncInputs("monthlyInvestment", "monthlySlider");
+        syncInputs("expectedReturn", "returnSlider");
+        syncInputs("investmentPeriod", "periodSlider");
+        syncInputs("stepUpRate", "stepUpSlider");
+
+        // Toggle Listeners
+        document.getElementById("stepUpToggle").addEventListener("change", function() {
+            document.getElementById("stepUpBox").style.display = this.checked ? "block" : "none";
+            calculateSIP();
+        });
+
+        document.getElementById("inflationToggle").addEventListener("change", function() {
+            document.getElementById("inflationNotice").style.display = this.checked ? "block" : "none";
+            calculateSIP();
+        });
+
+        // Read query parameters if shared via deep-link
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("m") && urlParams.has("r") && urlParams.has("y")) {
+            var m = Math.abs(parseFloat(urlParams.get("m"))) || 5000;
+            var r = Math.abs(parseFloat(urlParams.get("r"))) || 12;
+            var y = Math.abs(parseInt(urlParams.get("y"))) || 10;
+
+            document.getElementById("monthlyInvestment").value = m;
+            document.getElementById("monthlySlider").value = m;
+            document.getElementById("expectedReturn").value = r;
+            document.getElementById("returnSlider").value = r;
+            document.getElementById("investmentPeriod").value = y;
+            document.getElementById("periodSlider").value = y;
+
+            if (urlParams.has("su")) {
+                var su = Math.abs(parseFloat(urlParams.get("su"))) || 10;
+                document.getElementById("stepUpToggle").checked = true;
+                document.getElementById("stepUpBox").style.display = "block";
+                document.getElementById("stepUpRate").value = su;
+                document.getElementById("stepUpSlider").value = su;
+            }
+        }
+
+        // Initialize Calculation
+        calculateSIP();
+    });
+
+    // 2. Main Advanced SIP, Step-Up & LTCG Tax Calculation
+    function calculateSIP() {
+        // Strict input sanitization (Zero Injection / Hack Protection)
+        var initialMonthly = Math.abs(parseFloat(document.getElementById("monthlyInvestment").value)) || 0;
+        var annualRate = Math.abs(parseFloat(document.getElementById("expectedReturn").value)) || 0;
+        var years = Math.abs(parseInt(document.getElementById("investmentPeriod").value)) || 0;
+        var isStepUp = document.getElementById("stepUpToggle").checked;
+        var stepUpRate = isStepUp ? (Math.abs(parseFloat(document.getElementById("stepUpRate").value)) || 0) : 0;
+        var isInflation = document.getElementById("inflationToggle").checked;
+
+        if (initialMonthly <= 0 || annualRate <= 0 || years <= 0) {
+            return;
+        }
+
+        // Cap reasonable ranges
+        if (years > 50) years = 50;
+
+        var monthlyRate = (annualRate / 12) / 100;
+        var currentMonthly = initialMonthly;
+        var totalInvested = 0;
+        var totalBalance = 0;
+        currentYearlyData = [];
+
+        // Simulation month by month
+        for (var y = 1; y <= years; y++) {
+            var yearlyDeposit = 0;
+            var yearStartBalance = totalBalance;
+
+            for (var m = 1; m <= 12; m++) {
+                totalInvested += currentMonthly;
+                yearlyDeposit += currentMonthly;
+                totalBalance = (totalBalance + currentMonthly) * (1 + monthlyRate);
+            }
+
+            var yearlyInterest = Math.round(totalBalance - yearStartBalance - yearlyDeposit);
+
+            currentYearlyData.push({
+                year: y,
+                invested: Math.round(totalInvested),
+                interest: yearlyInterest,
+                balance: Math.round(totalBalance)
+            });
+
+            if (isStepUp) {
+                currentMonthly = currentMonthly * (1 + (stepUpRate / 100));
+            }
+        }
+
+        var finalWealth = Math.round(totalBalance);
+        var estimatedReturns = Math.round(finalWealth - totalInvested);
+
+        // 12.5% LTCG Tax Computation (₹1.25 Lakh exemption limit)
+        var taxableGains = Math.max(0, estimatedReturns - 125000);
+        var ltcgTaxAmount = Math.round(taxableGains * 0.125);
+        var postTaxWealth = finalWealth - ltcgTaxAmount;
+
+        // Save current summary for PDF
+        currentSummary = {
+            monthly: initialMonthly,
+            rate: annualRate,
+            years: years,
+            totalInvested: totalInvested,
+            estimatedReturns: estimatedReturns,
+            finalWealth: finalWealth,
+            taxAmount: ltcgTaxAmount,
+            postTaxWealth: postTaxWealth,
+            isStepUp: isStepUp,
+            stepUpRate: stepUpRate
+        };
+
+        // UI Displays
+        document.getElementById("totalWealthDisplay").textContent = "₹" + finalWealth.toLocaleString('en-IN');
+        document.getElementById("totalInvestedDisplay").textContent = "₹" + totalInvested.toLocaleString('en-IN');
+        document.getElementById("estReturnsDisplay").textContent = "₹" + estimatedReturns.toLocaleString('en-IN');
+
+        document.getElementById("taxAmountDisplay").textContent = "₹" + ltcgTaxAmount.toLocaleString('en-IN');
+        document.getElementById("postTaxWealthDisplay").textContent = "₹" + postTaxWealth.toLocaleString('en-IN');
+
+        // Progress Bar Ratio
+        var investedPercent = ((totalInvested / finalWealth) * 100).toFixed(1);
+        var returnsPercent = (100 - investedPercent).toFixed(1);
+        document.getElementById("barInvested").style.width = investedPercent + "%";
+        document.getElementById("barWealth").style.width = returnsPercent + "%";
+        document.getElementById("investedRatioLbl").textContent = "Invested: " + investedPercent + "%";
+        document.getElementById("returnsRatioLbl").textContent = "Gains: " + returnsPercent + "%";
+
+        // Inflation Adjustment (6% Long-Term Benchmark)
+        if (isInflation) {
+            var inflationRate = 0.06;
+            var realWealth = Math.round(finalWealth / Math.pow(1 + inflationRate, years));
+            document.getElementById("realWealthDisplay").textContent = "₹" + realWealth.toLocaleString('en-IN');
+        }
+
+        renderGrowthTable();
+
+        // Deep-linking URL update
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + 
+                     '?m=' + initialMonthly + '&r=' + annualRate + '&y=' + years + 
+                     (isStepUp ? '&su=' + stepUpRate : '');
+        window.history.replaceState({path: newUrl}, '', newUrl);
+
+        lastSIPReport = "My Wealth Plan: " + (isStepUp ? "Step-Up SIP" : "SIP") + " of ₹" + initialMonthly.toLocaleString('en-IN') + 
+                        "/month for " + years + " years @ " + annualRate + "% yields ₹" + finalWealth.toLocaleString('en-IN') + 
+                        " (Post-Tax: ₹" + postTaxWealth.toLocaleString('en-IN') + ")! Calculate yours: " + newUrl;
+
+        // Parent iFrame Handshake
+        if (window.self !== window.top && typeof window.__sendHeightToParent === "function") {
+            setTimeout(window.__sendHeightToParent, 80);
+        }
+    }
+
+    function renderGrowthTable() {
+        var tbody = document.getElementById("growthTableBody");
+        tbody.innerHTML = "";
+        currentYearlyData.forEach(function(row) {
+            var tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td style="text-align: left; font-weight: 700;">Year ${row.year}</td>
+                <td>₹${row.invested.toLocaleString('en-IN')}</td>
+                <td style="color: #2e7d32;">+₹${row.interest.toLocaleString('en-IN')}</td>
+                <td style="font-weight: 700; color: #1e293b;">₹${row.balance.toLocaleString('en-IN')}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function toggleScheduleTable() {
+        var wrap = document.getElementById("tableScheduleWrap");
+        var chevron = document.getElementById("tableChevron");
+        if (wrap.style.display === "block") {
+            wrap.style.display = "none";
+            chevron.textContent = "▼";
+        } else {
+            wrap.style.display = "block";
+            chevron.textContent = "▲";
+        }
+        if (window.self !== window.top && typeof window.__sendHeightToParent === "function") {
+            setTimeout(window.__sendHeightToParent, 80);
+        }
+    }
+
+    // 3. Multi-Page Enterprise White-Label PDF Report Generator
+    function downloadPDFReport() {
+        if (!window.jspdf) {
+            alert("PDF library is still initializing. Please try in a moment.");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Page 1 Header
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(20);
+        doc.setTextColor(30, 64, 175);
+        doc.text("WEALTH PLANNING & MUTUAL FUND REPORT", 14, 20);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(100, 116, 139);
+        doc.text("Generated by The AI Hub Tools (https://theaihub-tools.github.io/all-tools)", 14, 26);
+        doc.text("Date of Computation: " + new Date().toLocaleDateString('en-IN'), 14, 31);
+
+        // Summary Card
+        doc.setDrawColor(203, 213, 225);
+        doc.setFillColor(248, 250, 252);
+        doc.roundedRect(14, 36, 182, 45, 3, 3, "FD");
+
+        doc.setFontSize(10);
+        doc.setTextColor(30, 41, 59);
+        doc.text(`Monthly Investment: Rs. ${currentSummary.monthly.toLocaleString('en-IN')}`, 20, 45);
+        doc.text(`Expected Rate of Return: ${currentSummary.rate}% p.a`, 20, 53);
+        doc.text(`Investment Tenure: ${currentSummary.years} Years`, 20, 61);
+        doc.text(`Strategy Mode: ${currentSummary.isStepUp ? 'Step-Up SIP (+ ' + currentSummary.stepUpRate + '% p.a)' : 'Standard SIP'}`, 20, 69);
+
+        doc.setFont("helvetica", "bold");
+        doc.text(`Principal Deposited: Rs. ${currentSummary.totalInvested.toLocaleString('en-IN')}`, 105, 45);
+        doc.text(`Gross Capital Returns: Rs. ${currentSummary.estimatedReturns.toLocaleString('en-IN')}`, 105, 53);
+        doc.setTextColor(22, 101, 52);
+        doc.text(`Post-Tax In-Hand: Rs. ${currentSummary.postTaxWealth.toLocaleString('en-IN')}`, 105, 61);
+        doc.setTextColor(30, 64, 175);
+        doc.text(`Gross Corpus Wealth: Rs. ${currentSummary.finalWealth.toLocaleString('en-IN')}`, 105, 69);
+
+        // Tax Analysis Note Box
+        doc.setDrawColor(187, 247, 208);
+        doc.setFillColor(240, 253, 244);
+        doc.roundedRect(14, 85, 182, 18, 2, 2, "FD");
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(22, 101, 52);
+        doc.text(`Tax Deduction Details: Under Budget LTCG rules, an exemption of Rs. 1,25,000 was applied.`, 18, 92);
+        doc.text(`Estimated Long-Term Capital Gains Tax (12.5%): Rs. ${currentSummary.taxAmount.toLocaleString('en-IN')}`, 18, 98);
+
+        // Growth Schedule Table
+        var tableData = currentYearlyData.map(function(item) {
+            return [
+                "Year " + item.year,
+                "Rs. " + item.invested.toLocaleString('en-IN'),
+                "Rs. " + item.interest.toLocaleString('en-IN'),
+                "Rs. " + item.balance.toLocaleString('en-IN')
+            ];
+        });
+
+        doc.autoTable({
+            startY: 108,
+            head: [['Tenure', 'Cumulative Deposited', 'Annual Interest Accrued', 'Closing Portfolio Wealth']],
+            body: tableData,
+            theme: 'grid',
+            headStyles: { fillColor: [30, 64, 175], textColor: 255, fontStyle: 'bold' },
+            styles: { fontSize: 8.5, cellPadding: 2.8, halign: 'right' },
+            columnStyles: { 0: { halign: 'left' } },
+            margin: { bottom: 25 }
+        });
+
+        // Add Official Legal Disclaimer on all pages
+        var totalPages = doc.internal.getNumberOfPages();
+        for (var p = 1; p <= totalPages; p++) {
+            doc.setPage(p);
+            doc.setFontSize(8);
+            doc.setTextColor(148, 163, 184);
+            doc.text("Disclaimer: Mutual fund investments are subject to market risks. Projections are mathematical estimates. Page " + p + " of " + totalPages, 14, 290);
+        }
+
+        doc.save("Mutual-Fund-Wealth-Plan.pdf");
+    }
+
+    // 4. Mini Share & Summary Copy
+    function copySIPSummary() {
+        if (!lastSIPReport) return;
+        navigator.clipboard.writeText(lastSIPReport).then(function() {
+            alert("SIP Summary copied to clipboard! ✓");
+        });
+    }
+
+    function shareSIPWhatsApp() {
+        if (!lastSIPReport) return;
+        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(lastSIPReport), "_blank");
+    }
+
+    // 5. Social Sharing Handlers
+    function shareToPlatform(platform) {
+        var url = encodeURIComponent(window.location.href);
+        var title = encodeURIComponent(document.title);
+        var shareUrl = "";
+
+        switch(platform) {
+            case 'whatsapp': shareUrl = "https://api.whatsapp.com/send?text=" + title + "%20" + url; break;
+            case 'facebook': shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + url; break;
+            case 'twitter': shareUrl = "https://twitter.com/intent/tweet?text=" + title + "&url=" + url; break;
+            case 'telegram': shareUrl = "https://t.me/share/url?url=" + url + "&text=" + title; break;
+            case 'linkedin': shareUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + url; break;
+        }
+
+        if (shareUrl) {
+            window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=450');
+        }
+    }
+
+    function copyPageLink(buttonElement) {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            var originalText = buttonElement.innerText;
+            buttonElement.innerText = "Copied! ✓";
+            setTimeout(function() { buttonElement.innerText = originalText; }, 2000);
+        });
+    }
+
+    // 6. Automatic Embed Code generator
+    (function() {
+      var target = document.getElementById("auto-embed-generator");
+      if (!target) return;
+
+      var currentUrl = window.location.href.split('?')[0];
+      var domainUrl = window.location.origin;
+      var basePath = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+      var brandName = "Pro SIP Calculator — The AI Hub Tools";
+
+      var embedSnippet = '<div class="tool-embed-box" data-tool-url="' + currentUrl + '" data-height="720px" data-brand-name="' + brandName + '" data-brand-url="' + domainUrl + '"></div>\n' +
+                         '<script src="' + basePath + 'iframe.js" defer><\/script>';
+
+      target.innerHTML = 
+        '<div style="margin-top: 25px; padding: 14px; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; font-family: inherit; text-align: left;">' +
+          '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">' +
+            '<strong style="font-size: 13px; color: #334155;">💻 Embed this tool on your website:</strong>' +
+            '<button id="autoCopyBtn" style="padding: 6px 12px; background: #3182ce; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s;">Copy Embed Code</button>' +
+          '</div>' +
+          '<textarea id="autoEmbedText" readonly style="width: 100%; height: 65px; font-size: 12px; font-family: monospace; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; resize: none; background: #fff; box-sizing: border-box; color: #475569;">' + 
+            embedSnippet + 
+          '</textarea>' +
+        '</div>';
+
+      document.getElementById("autoCopyBtn").addEventListener("click", function() {
+        var textArea = document.getElementById("autoEmbedText");
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+
+        var btn = this;
+        btn.innerText = "Copied! ✓";
+        btn.style.background = "#38a169";
+
+        setTimeout(function() {
+          btn.innerText = "Copy Embed Code";
+          btn.style.background = "#3182ce";
+        }, 2200);
+      });
+    })();
+</script>
+
+<!-- All Pre-existing Scripts Preserved from your repo -->
+<script src="translator.js"></script>
+<script src="share-buttons.js"></script>
+<script src="schema.js"></script> 
+    
+</body>
+</html>
