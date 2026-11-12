@@ -73,6 +73,55 @@
     ]
   }
   </script>
+  <script>
+    // iFrame security and precise height handshake
+    if (window.self !== window.top) {
+      document.documentElement.classList.add('in-iframe-mode');
+
+      var metaRobots = document.createElement('meta');
+      metaRobots.name = 'robots';
+      metaRobots.content = 'noindex, follow';
+      document.head.appendChild(metaRobots);
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var embedUID = urlParams.get('embed_uid');
+
+      window.__sendHeightToParent = function() {
+        var mainBox = document.querySelector('.container, .main-container, .card') || document.body;
+        var height = Math.max(
+          mainBox.scrollHeight,
+          mainBox.offsetHeight,
+          mainBox.getBoundingClientRect().height
+        );
+
+        window.parent.postMessage({
+          type: 'TOOL_RESIZE_EVENT',
+          uid: embedUID,
+          height: Math.ceil(height)
+        }, '*');
+      };
+
+      window.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('h2, h3, h4, strong, b').forEach(function(el) {
+          if (/key features|what is base64|faq|frequently asked/i.test(el.textContent)) {
+            var featureCard = el.closest('.card, section, div');
+            if (featureCard && !featureCard.querySelector('input, textarea, button')) {
+              featureCard.style.display = 'none';
+            }
+          }
+        });
+
+        window.__sendHeightToParent();
+        if (window.ResizeObserver) {
+          new ResizeObserver(window.__sendHeightToParent).observe(document.body);
+        }
+        setInterval(window.__sendHeightToParent, 300);
+      });
+
+      window.addEventListener('load', window.__sendHeightToParent);
+      window.addEventListener('resize', window.__sendHeightToParent);
+    }
+  </script>
 
   <style>
     :root {
