@@ -65,23 +65,41 @@
           var urlParams = new URLSearchParams(window.location.search);
           var embedUID = urlParams.get('embed_uid');
 
-          window.__sendHeightToParent = function() {
-            var body = document.body;
-            var html = document.documentElement;
-            var height = Math.max(
-              body.scrollHeight, body.offsetHeight, body.getBoundingClientRect().height,
-              html.clientHeight, html.scrollHeight, html.offsetHeight
-            );
+              window.__sendHeightToParent = function() {
+      var mainBox = document.querySelector('.main-container, .card') || document.body;
+      var height = Math.max(
+        mainBox.scrollHeight,
+        mainBox.offsetHeight,
+        mainBox.getBoundingClientRect().height
+      );
 
-            window.parent.postMessage({
-              type: 'TOOL_RESIZE_EVENT',
-              uid: embedUID,
-              height: Math.ceil(height)
-            }, '*');
-          };
+      window.parent.postMessage({
+        type: 'TOOL_RESIZE_EVENT',
+        uid: embedUID,
+        height: Math.ceil(height)
+      }, '*');
+    };
 
-          window.addEventListener('load', window.__sendHeightToParent);
-          window.addEventListener('resize', window.__sendHeightToParent);
+    window.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('h2, h3, h4, strong, b').forEach(function(el) {
+        if (/key features/i.test(el.textContent)) {
+          var featureCard = el.closest('.card, section, div');
+          if (featureCard && !featureCard.querySelector('input, button')) {
+            featureCard.style.display = 'none';
+          }
+        }
+      });
+
+      window.__sendHeightToParent();
+      if (window.ResizeObserver) {
+        new ResizeObserver(window.__sendHeightToParent).observe(document.body);
+      }
+      setInterval(window.__sendHeightToParent, 300);
+    });
+
+    window.addEventListener('load', window.__sendHeightToParent);
+    window.addEventListener('resize', window.__sendHeightToParent);
+
         }
       })();
     </script>
